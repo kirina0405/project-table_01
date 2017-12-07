@@ -1,45 +1,35 @@
 import React, { Component } from 'react';
 import './App.css';
-import FieldForText from './Components/FieldForText';
-import Table from './Components/Table';
+// import FieldForText from './Components/FieldForText';
+// import Table from './Components/Table';
 
 export default class App extends Component {
     constructor(props) {
         super(props)
-        this.state = { value: '' }
+        this.state = {
+            value: '',
+            headTable: '',
+            bodyTable: ''
+        }
         this.handleChange = this.handleChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
     }
-
+    
     handleChange(event) {
         this.setState({ value: event.target.value })
     }
-
+    
     handleSubmit(event) {
         const loadText = this.state.value;
-        
-        const arr = loadText.split('\n');
+        // loadText = 'First name, Second name, Phone, E-mail, Web; John, Forest, +380979804567, JF@gmail.com, www.JohnForest.com; Iohn, MarkUp, +380975554567, IM@gmail.com, www.IohnMarkUp.com';
+        const arr = loadText.split(';');
         const arrThead = arr.splice(0, 1);
-        // console.log(arrThead);
-        const theadRow = arrThead.join('\n').split(',').map((arrTheadItem) => <th>{arrTheadItem}</th>);
-        // console.log(theadRow);
-        const rows = arr.map((row) => <tr>{row.split(',').map((cell) => <td>{cell}</td>)}</tr>);  
-        alert(rows);
+        const theadRow = arrThead.join('\n').split(',')
+        this.setState({
+            headTable: theadRow,
+            bodyTable: arr
+        })
     }  
-      
-    // render() {    
-    //     return ( 
-    //         <table>
-    //             <thead>
-    //                 <tr>{this.theadRow}</tr>
-    //             </thead>
-    //             <tbody>
-    //                 {this.rows}
-    //             </tbody>  
-    //         </table> 
-    //     )
-    // };
-
     render() {
         return (
         <section>
@@ -61,10 +51,25 @@ export default class App extends Component {
             <main>
                 <table>
                     <thead>
-                    <tr>{this.theadRow}headerTable</tr>
+                    <tr>
+                        {
+                            this.state.headTable ? this.state.headTable.map(item => <th key={item}>{item}</th>) : null
+                        }
+                    </tr>
                 </thead>
                 <tbody>
-                    {this.rows}rowsTable
+                    {
+                        this.state.bodyTable
+                        ? this.state.bodyTable.map(row => {
+                            return (<tr key={row.split(',')}>{
+                                row.split(',').map(cell=>{
+                                    return <td key={cell}>{cell}</td>
+                                })
+                            }</tr>
+                            )
+                        })
+                        : null
+                    }
                 </tbody>  
                 </table> 
             </main>
@@ -76,5 +81,4 @@ export default class App extends Component {
 
 
 
-//     loadText = 'First name, Second name, Phone, E-mail, Web; John, Forest, +380979804567, JF@gmail.com, www.JohnForest.com; Iohn, MarkUp, +380975554567, IM@gmail.com, www.IohnMarkUp.com';
 
