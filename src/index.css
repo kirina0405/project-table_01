@@ -1,27 +1,101 @@
 body {
     margin: 0;
     padding: 0;
-    font-family: sans-serif;
-    text-align: center;
-    background-color: rgb(107, 107, 107);
+    font-family: "Lato", Arial, Helvetica, sans-serif;
+    background-color: #e0e0e0;
 }
 
 
 /* ------fieldForText------- */
 
-.fieldForText__title {
-    font-size: 24px;
-    color: rgb(163, 163, 163);
+header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-top: 15px solid #f36d30;
+}
+
+.fieldForText_title {
+    font-size: 32px;
+    color: #f36d30;
+    margin: 35px 0 15px;
+    font-weight: 100;
+    text-transform: uppercase;
 }
 
 .fieldForText__field textarea {
     resize: none;
-    background-color: rgb(163, 163, 163);
+    background-color: #b6b6b6;
+    padding: 15px;
+    outline: none;
+    font-size: 15px;
+    border: 0;
+}
+
+.fieldForText__field textarea:focus {
+    background-color: #fff;
+    outline: none;
+}
+
+::-webkit-input-placeholder {
+    color: #f6f6ff99;
+    font-size: 18px;
+}
+
+::-moz-placeholder {
+    color: #f6f6ff99;
+    font-size: 18px;
+}
+
+:-moz-placeholder {
+    color: #f6f6ff99;
+    font-size: 18px;
+}
+
+:-ms-input-placeholder {
+    color: #f6f6ff99;
+    font-size: 18px;
+}
+
+input[placeholder] {
+    color: #f6f6ff99;
+    font-size: 18px;
+}
+
+input::-moz-placeholder {
+    text-overflow: ellipsis;
 }
 
 .fieldForText__button {
-    background-color: rgb(107, 107, 107);
-    font-size: 24px;
+    background-color: #e0e0e0;
+    font-size: 32px;
+    color: #8b8b8b;
+    border: 2px solid #8b8b8b;
+    margin: 25px 0;
+    cursor: pointer;
+    padding: 10px 15px;
+    font-weight: 100;
+    text-transform: uppercase;
+    outline: none;
+}
+
+.fieldForText__button:hover {
+    background-color: #f1bea6;
+    border: 2px solid #f36d30;
+    outline: 4px solid #f36d30;
+    outline-offset: 5px;
+    color: #fdfdfd;
+    transition: 0.1s;
+}
+
+.triangle {
+    border: 18px solid transparent;
+    border-top: 18px solid #8b8b8b;
+}
+
+.triangle_1 {
+    border: 20px solid transparent;
+    border-top: 20px solid #f36d30;
 }
 
 
@@ -30,25 +104,26 @@ body {
 main {
     width: 100%;
     text-align: center;
+    display: flex;
+    justify-content: center;
+    font-size: 20px;
+    margin-bottom: 50px;
 }
 
-.table table {
-    width: 300px;
-    border-radius: 10px;
-    background-color: rgb(228, 68, 5);
-    margin: 30px 0;
-    padding: 15px;
-}
-
-thead td,
 tbody td {
-    background-color: rgb(226, 142, 103);
+    background-color: #f5cab6;
+    padding: 10px;
+    text-align: left;
+    color: #3a3a3a;
 }
 
-thead td {
+.thead {
     border-radius: 10px 10px 0 0;
-}
-
-td {
-    height: 50px;
+    border-bottom: 5px solid #f36d30;
+    margin-bottom: 0;
+    background-color: #f1a785;
+    padding: 15px 10px 12px;
+    text-transform: uppercase;
+    color: #fdfdfd;
+    font-weight: 100;
 }
